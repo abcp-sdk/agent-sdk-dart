@@ -1,47 +1,35 @@
 // Agent typed client SDK for Dart/Flutter.
 //
 // One entrypoint, one baseUrl: the abc agent backend (agent.v1.AgentService).
-// This is a pure Connect client — no easylab gateway, no REST. It speaks
-// HTTP/2 only (over TLS via ALPN `h2`; the connectrpc `createHttpClient()`
-// refuses h2c unless you construct a cleartext transport yourself). The
-// client is generated from agent/v1/agent.proto by buf.
+// Pure Connect client — no easylab gateway, no REST.
+//
+// The HTTP stack is selected per platform via conditional imports:
+//   - web (browser)        -> `package:connectrpc/web.dart`   (fetch)
+//   - all native platforms  -> `package:connectrpc/http2.dart` (HTTP/2 over TLS)
 //
 // Usage:
 //   final client = AgentClient(baseUrl: 'https://agent.example.com', token: '');
 //   final sessions = await client.listSessions();
 library;
 
-import 'dart:convert';
-import 'dart:io' as io;
-
 import 'package:connectrpc/connect.dart' as connect;
-import 'package:connectrpc/http2.dart';
 import 'package:connectrpc/protobuf.dart';
 import 'package:connectrpc/protocol/connect.dart' as protocol;
 
 import 'src/gen/agent/v1/agent.connect.client.dart' as agent_client;
 import 'src/gen/agent/v1/agent.pb.dart' as agent_pb;
+import 'src/transport/transport_stub.dart'
+    if (dart.library.io) 'src/transport/transport_io.dart'
+    if (dart.library.js_interop) 'src/transport/transport_web.dart';
 
 /// Export the agent.v1 message + RPC surface.
 export 'src/gen/agent/v1/agent.pb.dart';
 export 'src/gen/agent/v1/agent.connect.client.dart';
 
-/// HTTPS-over-HTTP/2 certificate setup: a [SecurityContext] that the client
-/// uses when negotiating ALPN `h2`. When [caPem] is provided the CA is added
-/// to the trusted roots; otherwise the platform default trust store is used
-/// (which works for public TLS certs).
+/// CA certificate (PEM) used on native HTTP/2-TLS. Ignored on web.
 class AgentTls {
   const AgentTls({this.caPem});
   final String? caPem;
-
-  io.SecurityContext build({bool withTrustedRoots = true}) {
-    final ctx = io.SecurityContext(withTrustedRoots: withTrustedRoots);
-    final pem = caPem;
-    if (pem != null && pem.isNotEmpty) {
-      ctx.setTrustedCertificatesBytes(utf8.encode(pem));
-    }
-    return ctx;
-  }
 }
 
 /// Throws when a call was rejected (non-OK Connect code).
@@ -56,11 +44,10 @@ class AgentException implements Exception {
 /// The typed agent client over agent.v1.AgentService.
 ///
 /// [baseUrl] is protocol+host, no trailing slash required (e.g.
-/// `https://agent.example.com`). It must be `https` for TLS; the default
-/// transport only performs HTTP/2-over-TLS (ALPN `h2`).
+/// `https://agent.example.com`). [tls] is used on native platforms to trust a
+/// custom CA (self-signed agent); it is ignored on web.
 class AgentClient {
-  /// Base URL the transport points at (used to rebuild transports on CA
-  /// change).
+  /// Base URL the transport points at.
   final String baseUrl;
 
   /// Bearer token, attached to every request when non-empty.
@@ -68,7 +55,7 @@ class AgentClient {
 
   final connect.Transport _transport;
 
-  /// Build a client. Provide [tls] to trust a custom CA (self-signed agent).
+  /// Build a client. Provide [tls] to trust a custom CA on native platforms.
   AgentClient({required this.baseUrl, required this.token, AgentTls? tls})
       : _transport = _build(baseUrl, token, tls);
 
@@ -80,13 +67,10 @@ class AgentClient {
     final trimmed = baseUrl.endsWith('/')
         ? baseUrl.substring(0, baseUrl.length - 1)
         : baseUrl;
-    final context = tls?.build() ?? io.SecurityContext(withTrustedRoots: true);
     return protocol.Transport(
       baseUrl: trimmed,
       codec: const ProtoCodec(),
-      httpClient: createHttpClient(
-        transport: Http2ClientTransport(context: context),
-      ),
+      httpClient: buildHttpClient(caPem: tls?.caPem),
       interceptors: [
         if (token.isNotEmpty) _bearer(token),
       ],
