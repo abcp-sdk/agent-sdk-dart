@@ -270,20 +270,6 @@ abstract final class AgentService {
     agentv1agent.GetFileMetaResponse.new,
   );
 
-  static const listWorksheets = connect.Spec(
-    '/$name/ListWorksheets',
-    connect.StreamType.unary,
-    agentv1agent.ListWorksheetsRequest.new,
-    agentv1agent.ListWorksheetsResponse.new,
-  );
-
-  static const decideWorksheet = connect.Spec(
-    '/$name/DecideWorksheet',
-    connect.StreamType.unary,
-    agentv1agent.DecideWorksheetRequest.new,
-    agentv1agent.DecideWorksheetResponse.new,
-  );
-
   static const getAgentConfig = connect.Spec(
     '/$name/GetAgentConfig',
     connect.StreamType.unary,

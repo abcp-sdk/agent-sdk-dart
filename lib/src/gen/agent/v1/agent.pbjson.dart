@@ -146,31 +146,6 @@ final $typed_data.Uint8List mailboxEntryDescriptor = $convert.base64Decode(
     'EoCVIGc3RhdHVzEh0KCmNyZWF0ZWRfYXQYByABKAlSCWNyZWF0ZWRBdBIfCgtjb25zdW1lZF9h'
     'dBgIIAEoCVIKY29uc3VtZWRBdBIQCgNzZXEYCSABKANSA3NlcQ==');
 
-@$core.Deprecated('Use worksheetDescriptor instead')
-const Worksheet$json = {
-  '1': 'Worksheet',
-  '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'session_name', '3': 2, '4': 1, '5': 9, '10': 'sessionName'},
-    {'1': 'ext_id', '3': 3, '4': 1, '5': 9, '10': 'extId'},
-    {'1': 'action', '3': 4, '4': 1, '5': 9, '10': 'action'},
-    {'1': 'args', '3': 5, '4': 1, '5': 9, '10': 'args'},
-    {'1': 'title', '3': 6, '4': 1, '5': 9, '10': 'title'},
-    {'1': 'origin_call_id', '3': 7, '4': 1, '5': 9, '10': 'originCallId'},
-    {'1': 'status', '3': 8, '4': 1, '5': 9, '10': 'status'},
-    {'1': 'created_at', '3': 9, '4': 1, '5': 9, '10': 'createdAt'},
-    {'1': 'decided_at', '3': 10, '4': 1, '5': 9, '10': 'decidedAt'},
-  ],
-};
-
-/// Descriptor for `Worksheet`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List worksheetDescriptor = $convert.base64Decode(
-    'CglXb3Jrc2hlZXQSDgoCaWQYASABKAlSAmlkEiEKDHNlc3Npb25fbmFtZRgCIAEoCVILc2Vzc2'
-    'lvbk5hbWUSFQoGZXh0X2lkGAMgASgJUgVleHRJZBIWCgZhY3Rpb24YBCABKAlSBmFjdGlvbhIS'
-    'CgRhcmdzGAUgASgJUgRhcmdzEhQKBXRpdGxlGAYgASgJUgV0aXRsZRIkCg5vcmlnaW5fY2FsbF'
-    '9pZBgHIAEoCVIMb3JpZ2luQ2FsbElkEhYKBnN0YXR1cxgIIAEoCVIGc3RhdHVzEh0KCmNyZWF0'
-    'ZWRfYXQYCSABKAlSCWNyZWF0ZWRBdBIdCgpkZWNpZGVkX2F0GAogASgJUglkZWNpZGVkQXQ=');
-
 @$core.Deprecated('Use presetDescriptor instead')
 const Preset$json = {
   '1': 'Preset',
@@ -1573,67 +1548,6 @@ final $typed_data.Uint8List getFileMetaResponseDescriptor = $convert.base64Decod
     'ChNHZXRGaWxlTWV0YVJlc3BvbnNlEhIKBG5hbWUYASABKAlSBG5hbWUSEgoEbWltZRgCIAEoCV'
     'IEbWltZRISCgRzaXplGAMgASgFUgRzaXpl');
 
-@$core.Deprecated('Use listWorksheetsRequestDescriptor instead')
-const ListWorksheetsRequest$json = {
-  '1': 'ListWorksheetsRequest',
-  '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-  ],
-};
-
-/// Descriptor for `ListWorksheetsRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List listWorksheetsRequestDescriptor = $convert
-    .base64Decode('ChVMaXN0V29ya3NoZWV0c1JlcXVlc3QSDgoCaWQYASABKAlSAmlk');
-
-@$core.Deprecated('Use listWorksheetsResponseDescriptor instead')
-const ListWorksheetsResponse$json = {
-  '1': 'ListWorksheetsResponse',
-  '2': [
-    {
-      '1': 'worksheets',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.agent.v1.Worksheet',
-      '10': 'worksheets'
-    },
-  ],
-};
-
-/// Descriptor for `ListWorksheetsResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List listWorksheetsResponseDescriptor =
-    $convert.base64Decode(
-        'ChZMaXN0V29ya3NoZWV0c1Jlc3BvbnNlEjMKCndvcmtzaGVldHMYASADKAsyEy5hZ2VudC52MS'
-        '5Xb3Jrc2hlZXRSCndvcmtzaGVldHM=');
-
-@$core.Deprecated('Use decideWorksheetRequestDescriptor instead')
-const DecideWorksheetRequest$json = {
-  '1': 'DecideWorksheetRequest',
-  '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'wid', '3': 2, '4': 1, '5': 9, '10': 'wid'},
-    {'1': 'decision', '3': 3, '4': 1, '5': 9, '10': 'decision'},
-  ],
-};
-
-/// Descriptor for `DecideWorksheetRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List decideWorksheetRequestDescriptor =
-    $convert.base64Decode(
-        'ChZEZWNpZGVXb3Jrc2hlZXRSZXF1ZXN0Eg4KAmlkGAEgASgJUgJpZBIQCgN3aWQYAiABKAlSA3'
-        'dpZBIaCghkZWNpc2lvbhgDIAEoCVIIZGVjaXNpb24=');
-
-@$core.Deprecated('Use decideWorksheetResponseDescriptor instead')
-const DecideWorksheetResponse$json = {
-  '1': 'DecideWorksheetResponse',
-  '2': [
-    {'1': 'ok', '3': 1, '4': 1, '5': 8, '10': 'ok'},
-  ],
-};
-
-/// Descriptor for `DecideWorksheetResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List decideWorksheetResponseDescriptor = $convert
-    .base64Decode('ChdEZWNpZGVXb3Jrc2hlZXRSZXNwb25zZRIOCgJvaxgBIAEoCFICb2s=');
-
 @$core.Deprecated('Use getAgentConfigRequestDescriptor instead')
 const GetAgentConfigRequest$json = {
   '1': 'GetAgentConfigRequest',
@@ -1869,16 +1783,6 @@ const $core.Map<$core.String, $core.dynamic> AgentServiceBase$json = {
       '3': '.agent.v1.GetFileMetaResponse'
     },
     {
-      '1': 'ListWorksheets',
-      '2': '.agent.v1.ListWorksheetsRequest',
-      '3': '.agent.v1.ListWorksheetsResponse'
-    },
-    {
-      '1': 'DecideWorksheet',
-      '2': '.agent.v1.DecideWorksheetRequest',
-      '3': '.agent.v1.DecideWorksheetResponse'
-    },
-    {
       '1': 'GetAgentConfig',
       '2': '.agent.v1.GetAgentConfigRequest',
       '3': '.agent.v1.GetAgentConfigResponse'
@@ -1985,11 +1889,6 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
   '.agent.v1.GetFileResponse': GetFileResponse$json,
   '.agent.v1.GetFileMetaRequest': GetFileMetaRequest$json,
   '.agent.v1.GetFileMetaResponse': GetFileMetaResponse$json,
-  '.agent.v1.ListWorksheetsRequest': ListWorksheetsRequest$json,
-  '.agent.v1.ListWorksheetsResponse': ListWorksheetsResponse$json,
-  '.agent.v1.Worksheet': Worksheet$json,
-  '.agent.v1.DecideWorksheetRequest': DecideWorksheetRequest$json,
-  '.agent.v1.DecideWorksheetResponse': DecideWorksheetResponse$json,
   '.agent.v1.GetAgentConfigRequest': GetAgentConfigRequest$json,
   '.agent.v1.GetAgentConfigResponse': GetAgentConfigResponse$json,
 };
@@ -2046,8 +1945,5 @@ final $typed_data.Uint8List agentServiceDescriptor = $convert.base64Decode(
     'QaHC5hZ2VudC52MS5Jbmdlc3RGaWxlUmVzcG9uc2USPgoHR2V0RmlsZRIYLmFnZW50LnYxLkdl'
     'dEZpbGVSZXF1ZXN0GhkuYWdlbnQudjEuR2V0RmlsZVJlc3BvbnNlEkoKC0dldEZpbGVNZXRhEh'
     'wuYWdlbnQudjEuR2V0RmlsZU1ldGFSZXF1ZXN0Gh0uYWdlbnQudjEuR2V0RmlsZU1ldGFSZXNw'
-    'b25zZRJTCg5MaXN0V29ya3NoZWV0cxIfLmFnZW50LnYxLkxpc3RXb3Jrc2hlZXRzUmVxdWVzdB'
-    'ogLmFnZW50LnYxLkxpc3RXb3Jrc2hlZXRzUmVzcG9uc2USVgoPRGVjaWRlV29ya3NoZWV0EiAu'
-    'YWdlbnQudjEuRGVjaWRlV29ya3NoZWV0UmVxdWVzdBohLmFnZW50LnYxLkRlY2lkZVdvcmtzaG'
-    'VldFJlc3BvbnNlElMKDkdldEFnZW50Q29uZmlnEh8uYWdlbnQudjEuR2V0QWdlbnRDb25maWdS'
-    'ZXF1ZXN0GiAuYWdlbnQudjEuR2V0QWdlbnRDb25maWdSZXNwb25zZQ==');
+    'b25zZRJTCg5HZXRBZ2VudENvbmZpZxIfLmFnZW50LnYxLkdldEFnZW50Q29uZmlnUmVxdWVzdB'
+    'ogLmFnZW50LnYxLkdldEFnZW50Q29uZmlnUmVzcG9uc2U=');

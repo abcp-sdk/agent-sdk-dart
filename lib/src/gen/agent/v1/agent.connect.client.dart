@@ -638,40 +638,6 @@ extension type AgentServiceClient (connect.Transport _transport) {
     );
   }
 
-  Future<agentv1agent.ListWorksheetsResponse> listWorksheets(
-    agentv1agent.ListWorksheetsRequest input, {
-    connect.Headers? headers,
-    connect.AbortSignal? signal,
-    Function(connect.Headers)? onHeader,
-    Function(connect.Headers)? onTrailer,
-  }) {
-    return connect.Client(_transport).unary(
-      specs.AgentService.listWorksheets,
-      input,
-      signal: signal,
-      headers: headers,
-      onHeader: onHeader,
-      onTrailer: onTrailer,
-    );
-  }
-
-  Future<agentv1agent.DecideWorksheetResponse> decideWorksheet(
-    agentv1agent.DecideWorksheetRequest input, {
-    connect.Headers? headers,
-    connect.AbortSignal? signal,
-    Function(connect.Headers)? onHeader,
-    Function(connect.Headers)? onTrailer,
-  }) {
-    return connect.Client(_transport).unary(
-      specs.AgentService.decideWorksheet,
-      input,
-      signal: signal,
-      headers: headers,
-      onHeader: onHeader,
-      onTrailer: onTrailer,
-    );
-  }
-
   Future<agentv1agent.GetAgentConfigResponse> getAgentConfig(
     agentv1agent.GetAgentConfigRequest input, {
     connect.Headers? headers,

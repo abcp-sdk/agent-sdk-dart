@@ -95,10 +95,6 @@ abstract class AgentServiceBase extends $pb.GeneratedService {
       $pb.ServerContext ctx, $1.GetFileRequest request);
   $async.Future<$1.GetFileMetaResponse> getFileMeta(
       $pb.ServerContext ctx, $1.GetFileMetaRequest request);
-  $async.Future<$1.ListWorksheetsResponse> listWorksheets(
-      $pb.ServerContext ctx, $1.ListWorksheetsRequest request);
-  $async.Future<$1.DecideWorksheetResponse> decideWorksheet(
-      $pb.ServerContext ctx, $1.DecideWorksheetRequest request);
   $async.Future<$1.GetAgentConfigResponse> getAgentConfig(
       $pb.ServerContext ctx, $1.GetAgentConfigRequest request);
 
@@ -178,10 +174,6 @@ abstract class AgentServiceBase extends $pb.GeneratedService {
         return $1.GetFileRequest();
       case 'GetFileMeta':
         return $1.GetFileMetaRequest();
-      case 'ListWorksheets':
-        return $1.ListWorksheetsRequest();
-      case 'DecideWorksheet':
-        return $1.DecideWorksheetRequest();
       case 'GetAgentConfig':
         return $1.GetAgentConfigRequest();
       default:
@@ -267,10 +259,6 @@ abstract class AgentServiceBase extends $pb.GeneratedService {
         return getFile(ctx, request as $1.GetFileRequest);
       case 'GetFileMeta':
         return getFileMeta(ctx, request as $1.GetFileMetaRequest);
-      case 'ListWorksheets':
-        return listWorksheets(ctx, request as $1.ListWorksheetsRequest);
-      case 'DecideWorksheet':
-        return decideWorksheet(ctx, request as $1.DecideWorksheetRequest);
       case 'GetAgentConfig':
         return getAgentConfig(ctx, request as $1.GetAgentConfigRequest);
       default:
