@@ -5465,7 +5465,7 @@ class UploadFileResponse extends $pb.GeneratedMessage {
 class IngestFileRequest extends $pb.GeneratedMessage {
   factory IngestFileRequest({
     $core.String? code,
-    $core.String? data,
+    $core.List<$core.int>? data,
     $core.String? name,
     $core.String? mime,
   }) {
@@ -5491,7 +5491,8 @@ class IngestFileRequest extends $pb.GeneratedMessage {
       package: const $pb.PackageName(_omitMessageNames ? '' : 'agent.v1'),
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'code')
-    ..aOS(2, _omitFieldNames ? '' : 'data')
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
     ..aOS(3, _omitFieldNames ? '' : 'name')
     ..aOS(4, _omitFieldNames ? '' : 'mime')
     ..hasRequiredFields = false;
@@ -5525,9 +5526,9 @@ class IngestFileRequest extends $pb.GeneratedMessage {
   void clearCode() => $_clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get data => $_getSZ(1);
+  $core.List<$core.int> get data => $_getN(1);
   @$pb.TagNumber(2)
-  set data($core.String value) => $_setString(1, value);
+  set data($core.List<$core.int> value) => $_setBytes(1, value);
   @$pb.TagNumber(2)
   $core.bool hasData() => $_has(1);
   @$pb.TagNumber(2)
@@ -5674,7 +5675,7 @@ class GetFileRequest extends $pb.GeneratedMessage {
 
 class GetFileResponse extends $pb.GeneratedMessage {
   factory GetFileResponse({
-    $core.String? data,
+    $core.List<$core.int>? data,
     $core.String? name,
     $core.String? mime,
   }) {
@@ -5698,7 +5699,8 @@ class GetFileResponse extends $pb.GeneratedMessage {
       _omitMessageNames ? '' : 'GetFileResponse',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'agent.v1'),
       createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'data')
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..aOS(3, _omitFieldNames ? '' : 'mime')
     ..hasRequiredFields = false;
@@ -5723,9 +5725,9 @@ class GetFileResponse extends $pb.GeneratedMessage {
   static GetFileResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get data => $_getSZ(0);
+  $core.List<$core.int> get data => $_getN(0);
   @$pb.TagNumber(1)
-  set data($core.String value) => $_setString(0, value);
+  set data($core.List<$core.int> value) => $_setBytes(0, value);
   @$pb.TagNumber(1)
   $core.bool hasData() => $_has(0);
   @$pb.TagNumber(1)
