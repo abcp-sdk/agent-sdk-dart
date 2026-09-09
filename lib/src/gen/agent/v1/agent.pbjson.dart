@@ -1140,11 +1140,15 @@ final $typed_data.Uint8List modelInfoDescriptor = $convert.base64Decode(
 @$core.Deprecated('Use listPresetsRequestDescriptor instead')
 const ListPresetsRequest$json = {
   '1': 'ListPresetsRequest',
+  '2': [
+    {'1': 'locale', '3': 1, '4': 1, '5': 9, '10': 'locale'},
+  ],
 };
 
 /// Descriptor for `ListPresetsRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listPresetsRequestDescriptor =
-    $convert.base64Decode('ChJMaXN0UHJlc2V0c1JlcXVlc3Q=');
+    $convert.base64Decode(
+        'ChJMaXN0UHJlc2V0c1JlcXVlc3QSFgoGbG9jYWxlGAEgASgJUgZsb2NhbGU=');
 
 @$core.Deprecated('Use listPresetsResponseDescriptor instead')
 const ListPresetsResponse$json = {
