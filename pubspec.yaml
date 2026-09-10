@@ -1,6 +1,6 @@
 name: agent_client_sdk
 description: "Agent typed client SDK for Dart/Flutter over Connect (agent.v1.AgentService)."
-version: 0.4.0
+version: 0.6.0
 publish_to: 'none'
 
 environment:
@@ -10,4 +10,3 @@ dependencies:
   connectrpc: ^2.0.0
   protobuf: ^6.0.0
   fixnum: ^1.1.1
-  http2: ^2.3.0
