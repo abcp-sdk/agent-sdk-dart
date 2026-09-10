@@ -796,7 +796,7 @@ class Provider extends $pb.GeneratedMessage {
     $core.String? baseUrl,
     $core.String? apiKey,
     $core.Iterable<$core.MapEntry<$core.String, $core.String>>? headers,
-    $core.Iterable<$core.String>? models,
+    $core.Iterable<ProviderModel>? models,
     $core.String? updatedAt,
   }) {
     final result = create();
@@ -832,7 +832,8 @@ class Provider extends $pb.GeneratedMessage {
         keyFieldType: $pb.PbFieldType.OS,
         valueFieldType: $pb.PbFieldType.OS,
         packageName: const $pb.PackageName('agent.v1'))
-    ..pPS(6, _omitFieldNames ? '' : 'models')
+    ..pPM<ProviderModel>(6, _omitFieldNames ? '' : 'models',
+        subBuilder: ProviderModel.create)
     ..aOS(7, _omitFieldNames ? '' : 'updatedAt')
     ..hasRequiredFields = false;
 
@@ -894,7 +895,7 @@ class Provider extends $pb.GeneratedMessage {
   $pb.PbMap<$core.String, $core.String> get headers => $_getMap(4);
 
   @$pb.TagNumber(6)
-  $pb.PbList<$core.String> get models => $_getList(5);
+  $pb.PbList<ProviderModel> get models => $_getList(5);
 
   @$pb.TagNumber(7)
   $core.String get updatedAt => $_getSZ(6);
@@ -906,15 +907,19 @@ class Provider extends $pb.GeneratedMessage {
   void clearUpdatedAt() => $_clearField(7);
 }
 
-/// Provider model entry.
+/// Provider model entry. `context_limit` (the model's context window in
+/// tokens) is REQUIRED and user-supplied: it drives compaction budgets, and it
+/// is never inferred from an external catalog.
 class ProviderModel extends $pb.GeneratedMessage {
   factory ProviderModel({
     $core.String? id,
     $core.String? name,
+    $fixnum.Int64? contextLimit,
   }) {
     final result = create();
     if (id != null) result.id = id;
     if (name != null) result.name = name;
+    if (contextLimit != null) result.contextLimit = contextLimit;
     return result;
   }
 
@@ -933,6 +938,7 @@ class ProviderModel extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..aInt64(3, _omitFieldNames ? '' : 'contextLimit')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -971,6 +977,15 @@ class ProviderModel extends $pb.GeneratedMessage {
   $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
   void clearName() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get contextLimit => $_getI64(2);
+  @$pb.TagNumber(3)
+  set contextLimit($fixnum.Int64 value) => $_setInt64(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasContextLimit() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearContextLimit() => $_clearField(3);
 }
 
 /// Tool discovery entry.
@@ -3107,6 +3122,8 @@ class UpdateSettingsRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearPreset() => $_clearField(3);
 
+  /// Optional: omitted means "inherit (preset / default)"; an explicit value
+  /// must be > 0 (0 is rejected).
   @$pb.TagNumber(4)
   $core.int get maxTurns => $_getIZ(3);
   @$pb.TagNumber(4)
@@ -4240,11 +4257,13 @@ class ModelInfo extends $pb.GeneratedMessage {
     $core.String? id,
     $core.String? name,
     $core.Iterable<ModelVariant>? variants,
+    $fixnum.Int64? contextLimit,
   }) {
     final result = create();
     if (id != null) result.id = id;
     if (name != null) result.name = name;
     if (variants != null) result.variants.addAll(variants);
+    if (contextLimit != null) result.contextLimit = contextLimit;
     return result;
   }
 
@@ -4265,6 +4284,7 @@ class ModelInfo extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..pPM<ModelVariant>(3, _omitFieldNames ? '' : 'variants',
         subBuilder: ModelVariant.create)
+    ..aInt64(4, _omitFieldNames ? '' : 'contextLimit')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -4307,6 +4327,16 @@ class ModelInfo extends $pb.GeneratedMessage {
   /// Empty when the model has no reasoning options or is not in the catalog.
   @$pb.TagNumber(3)
   $pb.PbList<ModelVariant> get variants => $_getList(2);
+
+  /// Context window (tokens) configured for this provider model.
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get contextLimit => $_getI64(3);
+  @$pb.TagNumber(4)
+  set contextLimit($fixnum.Int64 value) => $_setInt64(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasContextLimit() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearContextLimit() => $_clearField(4);
 }
 
 /// A selectable reasoning variant for a model (e.g. low/medium/high/max, or a

@@ -189,7 +189,14 @@ const Provider$json = {
       '6': '.agent.v1.Provider.HeadersEntry',
       '10': 'headers'
     },
-    {'1': 'models', '3': 6, '4': 3, '5': 9, '10': 'models'},
+    {
+      '1': 'models',
+      '3': 6,
+      '4': 3,
+      '5': 11,
+      '6': '.agent.v1.ProviderModel',
+      '10': 'models'
+    },
     {'1': 'updated_at', '3': 7, '4': 1, '5': 9, '10': 'updatedAt'},
   ],
   '3': [Provider_HeadersEntry$json],
@@ -210,9 +217,9 @@ final $typed_data.Uint8List providerDescriptor = $convert.base64Decode(
     'CghQcm92aWRlchIfCgtwcm92aWRlcl9pZBgBIAEoCVIKcHJvdmlkZXJJZBIZCghhcGlfdHlwZR'
     'gCIAEoCVIHYXBpVHlwZRIZCghiYXNlX3VybBgDIAEoCVIHYmFzZVVybBIXCgdhcGlfa2V5GAQg'
     'ASgJUgZhcGlLZXkSOQoHaGVhZGVycxgFIAMoCzIfLmFnZW50LnYxLlByb3ZpZGVyLkhlYWRlcn'
-    'NFbnRyeVIHaGVhZGVycxIWCgZtb2RlbHMYBiADKAlSBm1vZGVscxIdCgp1cGRhdGVkX2F0GAcg'
-    'ASgJUgl1cGRhdGVkQXQaOgoMSGVhZGVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbH'
-    'VlGAIgASgJUgV2YWx1ZToCOAE=');
+    'NFbnRyeVIHaGVhZGVycxIvCgZtb2RlbHMYBiADKAsyFy5hZ2VudC52MS5Qcm92aWRlck1vZGVs'
+    'UgZtb2RlbHMSHQoKdXBkYXRlZF9hdBgHIAEoCVIJdXBkYXRlZEF0GjoKDEhlYWRlcnNFbnRyeR'
+    'IQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
 
 @$core.Deprecated('Use providerModelDescriptor instead')
 const ProviderModel$json = {
@@ -220,12 +227,14 @@ const ProviderModel$json = {
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
+    {'1': 'context_limit', '3': 3, '4': 1, '5': 3, '10': 'contextLimit'},
   ],
 };
 
 /// Descriptor for `ProviderModel`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List providerModelDescriptor = $convert.base64Decode(
-    'Cg1Qcm92aWRlck1vZGVsEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1l');
+    'Cg1Qcm92aWRlck1vZGVsEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEiMKDW'
+    'NvbnRleHRfbGltaXQYAyABKANSDGNvbnRleHRMaW1pdA==');
 
 @$core.Deprecated('Use toolInfoDescriptor instead')
 const ToolInfo$json = {
@@ -801,19 +810,30 @@ const UpdateSettingsRequest$json = {
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     {'1': 'model', '3': 2, '4': 1, '5': 9, '10': 'model'},
     {'1': 'preset', '3': 3, '4': 1, '5': 9, '10': 'preset'},
-    {'1': 'max_turns', '3': 4, '4': 1, '5': 5, '10': 'maxTurns'},
+    {
+      '1': 'max_turns',
+      '3': 4,
+      '4': 1,
+      '5': 5,
+      '9': 0,
+      '10': 'maxTurns',
+      '17': true
+    },
     {'1': 'system_prompt', '3': 5, '4': 1, '5': 9, '10': 'systemPrompt'},
     {'1': 'locale', '3': 6, '4': 1, '5': 9, '10': 'locale'},
     {'1': 'variant', '3': 7, '4': 1, '5': 9, '10': 'variant'},
+  ],
+  '8': [
+    {'1': '_max_turns'},
   ],
 };
 
 /// Descriptor for `UpdateSettingsRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateSettingsRequestDescriptor = $convert.base64Decode(
     'ChVVcGRhdGVTZXR0aW5nc1JlcXVlc3QSDgoCaWQYASABKAlSAmlkEhQKBW1vZGVsGAIgASgJUg'
-    'Vtb2RlbBIWCgZwcmVzZXQYAyABKAlSBnByZXNldBIbCgltYXhfdHVybnMYBCABKAVSCG1heFR1'
-    'cm5zEiMKDXN5c3RlbV9wcm9tcHQYBSABKAlSDHN5c3RlbVByb21wdBIWCgZsb2NhbGUYBiABKA'
-    'lSBmxvY2FsZRIYCgd2YXJpYW50GAcgASgJUgd2YXJpYW50');
+    'Vtb2RlbBIWCgZwcmVzZXQYAyABKAlSBnByZXNldBIgCgltYXhfdHVybnMYBCABKAVIAFIIbWF4'
+    'VHVybnOIAQESIwoNc3lzdGVtX3Byb21wdBgFIAEoCVIMc3lzdGVtUHJvbXB0EhYKBmxvY2FsZR'
+    'gGIAEoCVIGbG9jYWxlEhgKB3ZhcmlhbnQYByABKAlSB3ZhcmlhbnRCDAoKX21heF90dXJucw==');
 
 @$core.Deprecated('Use updateSettingsResponseDescriptor instead')
 const UpdateSettingsResponse$json = {
@@ -1148,13 +1168,15 @@ const ModelInfo$json = {
       '6': '.agent.v1.ModelVariant',
       '10': 'variants'
     },
+    {'1': 'context_limit', '3': 4, '4': 1, '5': 3, '10': 'contextLimit'},
   ],
 };
 
 /// Descriptor for `ModelInfo`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List modelInfoDescriptor = $convert.base64Decode(
     'CglNb2RlbEluZm8SDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSMgoIdmFyaW'
-    'FudHMYAyADKAsyFi5hZ2VudC52MS5Nb2RlbFZhcmlhbnRSCHZhcmlhbnRz');
+    'FudHMYAyADKAsyFi5hZ2VudC52MS5Nb2RlbFZhcmlhbnRSCHZhcmlhbnRzEiMKDWNvbnRleHRf'
+    'bGltaXQYBCABKANSDGNvbnRleHRMaW1pdA==');
 
 @$core.Deprecated('Use modelVariantDescriptor instead')
 const ModelVariant$json = {
@@ -1879,6 +1901,7 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
   '.agent.v1.ListProvidersResponse': ListProvidersResponse$json,
   '.agent.v1.Provider': Provider$json,
   '.agent.v1.Provider.HeadersEntry': Provider_HeadersEntry$json,
+  '.agent.v1.ProviderModel': ProviderModel$json,
   '.agent.v1.ListProvidersCatalogRequest': ListProvidersCatalogRequest$json,
   '.agent.v1.ListProvidersCatalogResponse': ListProvidersCatalogResponse$json,
   '.agent.v1.ListProvidersCatalogResponse.ProvidersEntry':
