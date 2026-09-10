@@ -43,6 +43,7 @@ class Session extends $pb.GeneratedMessage {
     $core.int? unreadCount,
     $core.String? lastMessageAt,
     $core.String? lastMessagePreview,
+    $core.String? variant,
   }) {
     final result = create();
     if (name != null) result.name = name;
@@ -67,6 +68,7 @@ class Session extends $pb.GeneratedMessage {
     if (lastMessageAt != null) result.lastMessageAt = lastMessageAt;
     if (lastMessagePreview != null)
       result.lastMessagePreview = lastMessagePreview;
+    if (variant != null) result.variant = variant;
     return result;
   }
 
@@ -104,6 +106,7 @@ class Session extends $pb.GeneratedMessage {
     ..aI(19, _omitFieldNames ? '' : 'unreadCount')
     ..aOS(20, _omitFieldNames ? '' : 'lastMessageAt')
     ..aOS(21, _omitFieldNames ? '' : 'lastMessagePreview')
+    ..aOS(22, _omitFieldNames ? '' : 'variant')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -133,6 +136,8 @@ class Session extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearName() => $_clearField(1);
 
+  /// Canonical model reference "provider_id/model_id". A bare model id is
+  /// never resolved by flat lookup: the provider must be named explicitly.
   @$pb.TagNumber(2)
   $core.String get model => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -313,6 +318,17 @@ class Session extends $pb.GeneratedMessage {
   $core.bool hasLastMessagePreview() => $_has(20);
   @$pb.TagNumber(21)
   void clearLastMessagePreview() => $_clearField(21);
+
+  /// Selected reasoning variant id (e.g. "low"/"medium"/"high"/"max"/"fast").
+  /// Empty means "no variant" (provider defaults; no providerOptions sent).
+  @$pb.TagNumber(22)
+  $core.String get variant => $_getSZ(21);
+  @$pb.TagNumber(22)
+  set variant($core.String value) => $_setString(21, value);
+  @$pb.TagNumber(22)
+  $core.bool hasVariant() => $_has(21);
+  @$pb.TagNumber(22)
+  void clearVariant() => $_clearField(22);
 }
 
 /// Message row (bare).
@@ -1628,6 +1644,7 @@ class CreateSessionRequest extends $pb.GeneratedMessage {
     $core.String? org,
     $core.String? repo,
     $core.String? branch,
+    $core.String? variant,
   }) {
     final result = create();
     if (name != null) result.name = name;
@@ -1636,6 +1653,7 @@ class CreateSessionRequest extends $pb.GeneratedMessage {
     if (org != null) result.org = org;
     if (repo != null) result.repo = repo;
     if (branch != null) result.branch = branch;
+    if (variant != null) result.variant = variant;
     return result;
   }
 
@@ -1658,6 +1676,7 @@ class CreateSessionRequest extends $pb.GeneratedMessage {
     ..aOS(4, _omitFieldNames ? '' : 'org')
     ..aOS(5, _omitFieldNames ? '' : 'repo')
     ..aOS(6, _omitFieldNames ? '' : 'branch')
+    ..aOS(7, _omitFieldNames ? '' : 'variant')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1688,6 +1707,7 @@ class CreateSessionRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearName() => $_clearField(1);
 
+  /// Canonical model reference "provider_id/model_id".
   @$pb.TagNumber(2)
   $core.String get model => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1732,6 +1752,16 @@ class CreateSessionRequest extends $pb.GeneratedMessage {
   $core.bool hasBranch() => $_has(5);
   @$pb.TagNumber(6)
   void clearBranch() => $_clearField(6);
+
+  /// Optional reasoning variant id (see ModelInfo.variants).
+  @$pb.TagNumber(7)
+  $core.String get variant => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set variant($core.String value) => $_setString(6, value);
+  @$pb.TagNumber(7)
+  $core.bool hasVariant() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearVariant() => $_clearField(7);
 }
 
 class CreateSessionResponse extends $pb.GeneratedMessage {
@@ -2507,10 +2537,12 @@ class SetModelRequest extends $pb.GeneratedMessage {
   factory SetModelRequest({
     $core.String? id,
     $core.String? model,
+    $core.String? variant,
   }) {
     final result = create();
     if (id != null) result.id = id;
     if (model != null) result.model = model;
+    if (variant != null) result.variant = variant;
     return result;
   }
 
@@ -2529,6 +2561,7 @@ class SetModelRequest extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'model')
+    ..aOS(3, _omitFieldNames ? '' : 'variant')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -2567,6 +2600,15 @@ class SetModelRequest extends $pb.GeneratedMessage {
   $core.bool hasModel() => $_has(1);
   @$pb.TagNumber(2)
   void clearModel() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get variant => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set variant($core.String value) => $_setString(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasVariant() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearVariant() => $_clearField(3);
 }
 
 class SetModelResponse extends $pb.GeneratedMessage {
@@ -2983,6 +3025,7 @@ class UpdateSettingsRequest extends $pb.GeneratedMessage {
     $core.int? maxTurns,
     $core.String? systemPrompt,
     $core.String? locale,
+    $core.String? variant,
   }) {
     final result = create();
     if (id != null) result.id = id;
@@ -2991,6 +3034,7 @@ class UpdateSettingsRequest extends $pb.GeneratedMessage {
     if (maxTurns != null) result.maxTurns = maxTurns;
     if (systemPrompt != null) result.systemPrompt = systemPrompt;
     if (locale != null) result.locale = locale;
+    if (variant != null) result.variant = variant;
     return result;
   }
 
@@ -3013,6 +3057,7 @@ class UpdateSettingsRequest extends $pb.GeneratedMessage {
     ..aI(4, _omitFieldNames ? '' : 'maxTurns')
     ..aOS(5, _omitFieldNames ? '' : 'systemPrompt')
     ..aOS(6, _omitFieldNames ? '' : 'locale')
+    ..aOS(7, _omitFieldNames ? '' : 'variant')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -3088,6 +3133,16 @@ class UpdateSettingsRequest extends $pb.GeneratedMessage {
   $core.bool hasLocale() => $_has(5);
   @$pb.TagNumber(6)
   void clearLocale() => $_clearField(6);
+
+  /// Selected reasoning variant id (empty clears it).
+  @$pb.TagNumber(7)
+  $core.String get variant => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set variant($core.String value) => $_setString(6, value);
+  @$pb.TagNumber(7)
+  $core.bool hasVariant() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearVariant() => $_clearField(7);
 }
 
 class UpdateSettingsResponse extends $pb.GeneratedMessage {
@@ -3900,6 +3955,7 @@ class TestProviderRequest extends $pb.GeneratedMessage {
     $core.String? baseUrl,
     $core.String? apiKey,
     $core.String? model,
+    $core.String? variant,
   }) {
     final result = create();
     if (providerId != null) result.providerId = providerId;
@@ -3907,6 +3963,7 @@ class TestProviderRequest extends $pb.GeneratedMessage {
     if (baseUrl != null) result.baseUrl = baseUrl;
     if (apiKey != null) result.apiKey = apiKey;
     if (model != null) result.model = model;
+    if (variant != null) result.variant = variant;
     return result;
   }
 
@@ -3928,6 +3985,7 @@ class TestProviderRequest extends $pb.GeneratedMessage {
     ..aOS(3, _omitFieldNames ? '' : 'baseUrl')
     ..aOS(4, _omitFieldNames ? '' : 'apiKey')
     ..aOS(5, _omitFieldNames ? '' : 'model')
+    ..aOS(6, _omitFieldNames ? '' : 'variant')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -3993,6 +4051,16 @@ class TestProviderRequest extends $pb.GeneratedMessage {
   $core.bool hasModel() => $_has(4);
   @$pb.TagNumber(5)
   void clearModel() => $_clearField(5);
+
+  /// Optional reasoning variant id to exercise in the test generation.
+  @$pb.TagNumber(6)
+  $core.String get variant => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set variant($core.String value) => $_setString(5, value);
+  @$pb.TagNumber(6)
+  $core.bool hasVariant() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearVariant() => $_clearField(6);
 }
 
 class TestProviderResponse extends $pb.GeneratedMessage {
@@ -4061,8 +4129,9 @@ class TestProviderResponse extends $pb.GeneratedMessage {
   void clearResult() => $_clearField(2);
 }
 
-/// ListModels returns models. When provider_id is set, only that provider's
-/// models are returned; empty returns every registered provider's models.
+/// ListModels returns the models of ONE provider. provider_id is required: the
+/// server rejects an empty value (InvalidArgument) so a global flat model list
+/// — which would surface duplicate ids across providers — is never produced.
 class ListModelsRequest extends $pb.GeneratedMessage {
   factory ListModelsRequest({
     $core.String? providerId,
@@ -4170,10 +4239,12 @@ class ModelInfo extends $pb.GeneratedMessage {
   factory ModelInfo({
     $core.String? id,
     $core.String? name,
+    $core.Iterable<ModelVariant>? variants,
   }) {
     final result = create();
     if (id != null) result.id = id;
     if (name != null) result.name = name;
+    if (variants != null) result.variants.addAll(variants);
     return result;
   }
 
@@ -4192,6 +4263,8 @@ class ModelInfo extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..pPM<ModelVariant>(3, _omitFieldNames ? '' : 'variants',
+        subBuilder: ModelVariant.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -4229,6 +4302,91 @@ class ModelInfo extends $pb.GeneratedMessage {
   $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
   void clearName() => $_clearField(2);
+
+  /// Reasoning variants offered by this model (from the models.dev catalog).
+  /// Empty when the model has no reasoning options or is not in the catalog.
+  @$pb.TagNumber(3)
+  $pb.PbList<ModelVariant> get variants => $_getList(2);
+}
+
+/// A selectable reasoning variant for a model (e.g. low/medium/high/max, or a
+/// fast mode). `id` is passed back on CreateSession/SetModel/UpdateSettings.
+class ModelVariant extends $pb.GeneratedMessage {
+  factory ModelVariant({
+    $core.String? id,
+    $core.String? name,
+    $core.String? description,
+  }) {
+    final result = create();
+    if (id != null) result.id = id;
+    if (name != null) result.name = name;
+    if (description != null) result.description = description;
+    return result;
+  }
+
+  ModelVariant._();
+
+  factory ModelVariant.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ModelVariant.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ModelVariant',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'agent.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..aOS(3, _omitFieldNames ? '' : 'description')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ModelVariant clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ModelVariant copyWith(void Function(ModelVariant) updates) =>
+      super.copyWith((message) => updates(message as ModelVariant))
+          as ModelVariant;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ModelVariant create() => ModelVariant._();
+  @$core.override
+  ModelVariant createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ModelVariant getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ModelVariant>(create);
+  static ModelVariant? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get name => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set name($core.String value) => $_setString(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearName() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get description => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set description($core.String value) => $_setString(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasDescription() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDescription() => $_clearField(3);
 }
 
 /// ListPresets lists presets. When locale is set (e.g. "zh"), each preset's

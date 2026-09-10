@@ -61,6 +61,7 @@ const Session$json = {
       '5': 9,
       '10': 'lastMessagePreview'
     },
+    {'1': 'variant', '3': 22, '4': 1, '5': 9, '10': 'variant'},
   ],
 };
 
@@ -78,7 +79,7 @@ final $typed_data.Uint8List sessionDescriptor = $convert.base64Decode(
     'ISCgRyZXBvGBEgASgJUgRyZXBvEhYKBmJyYW5jaBgSIAEoCVIGYnJhbmNoEiEKDHVucmVhZF9j'
     'b3VudBgTIAEoBVILdW5yZWFkQ291bnQSJgoPbGFzdF9tZXNzYWdlX2F0GBQgASgJUg1sYXN0TW'
     'Vzc2FnZUF0EjAKFGxhc3RfbWVzc2FnZV9wcmV2aWV3GBUgASgJUhJsYXN0TWVzc2FnZVByZXZp'
-    'ZXc=');
+    'ZXcSGAoHdmFyaWFudBgWIAEoCVIHdmFyaWFudA==');
 
 @$core.Deprecated('Use messageDescriptor instead')
 const Message$json = {
@@ -451,6 +452,7 @@ const CreateSessionRequest$json = {
     {'1': 'org', '3': 4, '4': 1, '5': 9, '10': 'org'},
     {'1': 'repo', '3': 5, '4': 1, '5': 9, '10': 'repo'},
     {'1': 'branch', '3': 6, '4': 1, '5': 9, '10': 'branch'},
+    {'1': 'variant', '3': 7, '4': 1, '5': 9, '10': 'variant'},
   ],
 };
 
@@ -458,7 +460,8 @@ const CreateSessionRequest$json = {
 final $typed_data.Uint8List createSessionRequestDescriptor = $convert.base64Decode(
     'ChRDcmVhdGVTZXNzaW9uUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEhQKBW1vZGVsGAIgAS'
     'gJUgVtb2RlbBIWCgZwcmVzZXQYAyABKAlSBnByZXNldBIQCgNvcmcYBCABKAlSA29yZxISCgRy'
-    'ZXBvGAUgASgJUgRyZXBvEhYKBmJyYW5jaBgGIAEoCVIGYnJhbmNo');
+    'ZXBvGAUgASgJUgRyZXBvEhYKBmJyYW5jaBgGIAEoCVIGYnJhbmNoEhgKB3ZhcmlhbnQYByABKA'
+    'lSB3ZhcmlhbnQ=');
 
 @$core.Deprecated('Use createSessionResponseDescriptor instead')
 const CreateSessionResponse$json = {
@@ -663,13 +666,14 @@ const SetModelRequest$json = {
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     {'1': 'model', '3': 2, '4': 1, '5': 9, '10': 'model'},
+    {'1': 'variant', '3': 3, '4': 1, '5': 9, '10': 'variant'},
   ],
 };
 
 /// Descriptor for `SetModelRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List setModelRequestDescriptor = $convert.base64Decode(
-    'Cg9TZXRNb2RlbFJlcXVlc3QSDgoCaWQYASABKAlSAmlkEhQKBW1vZGVsGAIgASgJUgVtb2RlbA'
-    '==');
+    'Cg9TZXRNb2RlbFJlcXVlc3QSDgoCaWQYASABKAlSAmlkEhQKBW1vZGVsGAIgASgJUgVtb2RlbB'
+    'IYCgd2YXJpYW50GAMgASgJUgd2YXJpYW50');
 
 @$core.Deprecated('Use setModelResponseDescriptor instead')
 const SetModelResponse$json = {
@@ -800,6 +804,7 @@ const UpdateSettingsRequest$json = {
     {'1': 'max_turns', '3': 4, '4': 1, '5': 5, '10': 'maxTurns'},
     {'1': 'system_prompt', '3': 5, '4': 1, '5': 9, '10': 'systemPrompt'},
     {'1': 'locale', '3': 6, '4': 1, '5': 9, '10': 'locale'},
+    {'1': 'variant', '3': 7, '4': 1, '5': 9, '10': 'variant'},
   ],
 };
 
@@ -808,7 +813,7 @@ final $typed_data.Uint8List updateSettingsRequestDescriptor = $convert.base64Dec
     'ChVVcGRhdGVTZXR0aW5nc1JlcXVlc3QSDgoCaWQYASABKAlSAmlkEhQKBW1vZGVsGAIgASgJUg'
     'Vtb2RlbBIWCgZwcmVzZXQYAyABKAlSBnByZXNldBIbCgltYXhfdHVybnMYBCABKAVSCG1heFR1'
     'cm5zEiMKDXN5c3RlbV9wcm9tcHQYBSABKAlSDHN5c3RlbVByb21wdBIWCgZsb2NhbGUYBiABKA'
-    'lSBmxvY2FsZQ==');
+    'lSBmxvY2FsZRIYCgd2YXJpYW50GAcgASgJUgd2YXJpYW50');
 
 @$core.Deprecated('Use updateSettingsResponseDescriptor instead')
 const UpdateSettingsResponse$json = {
@@ -1072,6 +1077,7 @@ const TestProviderRequest$json = {
     {'1': 'base_url', '3': 3, '4': 1, '5': 9, '10': 'baseUrl'},
     {'1': 'api_key', '3': 4, '4': 1, '5': 9, '10': 'apiKey'},
     {'1': 'model', '3': 5, '4': 1, '5': 9, '10': 'model'},
+    {'1': 'variant', '3': 6, '4': 1, '5': 9, '10': 'variant'},
   ],
 };
 
@@ -1079,7 +1085,8 @@ const TestProviderRequest$json = {
 final $typed_data.Uint8List testProviderRequestDescriptor = $convert.base64Decode(
     'ChNUZXN0UHJvdmlkZXJSZXF1ZXN0Eh8KC3Byb3ZpZGVyX2lkGAEgASgJUgpwcm92aWRlcklkEh'
     'kKCGFwaV90eXBlGAIgASgJUgdhcGlUeXBlEhkKCGJhc2VfdXJsGAMgASgJUgdiYXNlVXJsEhcK'
-    'B2FwaV9rZXkYBCABKAlSBmFwaUtleRIUCgVtb2RlbBgFIAEoCVIFbW9kZWw=');
+    'B2FwaV9rZXkYBCABKAlSBmFwaUtleRIUCgVtb2RlbBgFIAEoCVIFbW9kZWwSGAoHdmFyaWFudB'
+    'gGIAEoCVIHdmFyaWFudA==');
 
 @$core.Deprecated('Use testProviderResponseDescriptor instead')
 const TestProviderResponse$json = {
@@ -1133,12 +1140,36 @@ const ModelInfo$json = {
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
+    {
+      '1': 'variants',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.agent.v1.ModelVariant',
+      '10': 'variants'
+    },
   ],
 };
 
 /// Descriptor for `ModelInfo`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List modelInfoDescriptor = $convert.base64Decode(
-    'CglNb2RlbEluZm8SDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWU=');
+    'CglNb2RlbEluZm8SDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSMgoIdmFyaW'
+    'FudHMYAyADKAsyFi5hZ2VudC52MS5Nb2RlbFZhcmlhbnRSCHZhcmlhbnRz');
+
+@$core.Deprecated('Use modelVariantDescriptor instead')
+const ModelVariant$json = {
+  '1': 'ModelVariant',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
+    {'1': 'description', '3': 3, '4': 1, '5': 9, '10': 'description'},
+  ],
+};
+
+/// Descriptor for `ModelVariant`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List modelVariantDescriptor = $convert.base64Decode(
+    'CgxNb2RlbFZhcmlhbnQSDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSIAoLZG'
+    'VzY3JpcHRpb24YAyABKAlSC2Rlc2NyaXB0aW9u');
 
 @$core.Deprecated('Use listPresetsRequestDescriptor instead')
 const ListPresetsRequest$json = {
@@ -1863,6 +1894,7 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
   '.agent.v1.ListModelsRequest': ListModelsRequest$json,
   '.agent.v1.ListModelsResponse': ListModelsResponse$json,
   '.agent.v1.ModelInfo': ModelInfo$json,
+  '.agent.v1.ModelVariant': ModelVariant$json,
   '.agent.v1.ListPresetsRequest': ListPresetsRequest$json,
   '.agent.v1.ListPresetsResponse': ListPresetsResponse$json,
   '.agent.v1.Preset': Preset$json,
