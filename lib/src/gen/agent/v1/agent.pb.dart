@@ -931,11 +931,13 @@ class ProviderModel extends $pb.GeneratedMessage {
     $core.String? id,
     $core.String? name,
     $fixnum.Int64? contextLimit,
+    $core.String? capability,
   }) {
     final result = create();
     if (id != null) result.id = id;
     if (name != null) result.name = name;
     if (contextLimit != null) result.contextLimit = contextLimit;
+    if (capability != null) result.capability = capability;
     return result;
   }
 
@@ -955,6 +957,7 @@ class ProviderModel extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..aInt64(3, _omitFieldNames ? '' : 'contextLimit')
+    ..aOS(4, _omitFieldNames ? '' : 'capability')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -994,6 +997,8 @@ class ProviderModel extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearName() => $_clearField(2);
 
+  /// Context window (tokens). REQUIRED (> 0) for text models (drives
+  /// compaction budgets); ignored for generation models (image/video/speech).
   @$pb.TagNumber(3)
   $fixnum.Int64 get contextLimit => $_getI64(2);
   @$pb.TagNumber(3)
@@ -1002,6 +1007,19 @@ class ProviderModel extends $pb.GeneratedMessage {
   $core.bool hasContextLimit() => $_has(2);
   @$pb.TagNumber(3)
   void clearContextLimit() => $_clearField(3);
+
+  /// What the model generates: "text" (default, chat/vision), "image",
+  /// "video", or "speech". Text models feed sessions; generation models are
+  /// resolved by tools (image-generate / image-edit / video-generate /
+  /// tts-generate) via the same provider registry.
+  @$pb.TagNumber(4)
+  $core.String get capability => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set capability($core.String value) => $_setString(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasCapability() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearCapability() => $_clearField(4);
 }
 
 /// Tool discovery entry.

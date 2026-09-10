@@ -230,13 +230,15 @@ const ProviderModel$json = {
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
     {'1': 'context_limit', '3': 3, '4': 1, '5': 3, '10': 'contextLimit'},
+    {'1': 'capability', '3': 4, '4': 1, '5': 9, '10': 'capability'},
   ],
 };
 
 /// Descriptor for `ProviderModel`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List providerModelDescriptor = $convert.base64Decode(
     'Cg1Qcm92aWRlck1vZGVsEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEiMKDW'
-    'NvbnRleHRfbGltaXQYAyABKANSDGNvbnRleHRMaW1pdA==');
+    'NvbnRleHRfbGltaXQYAyABKANSDGNvbnRleHRMaW1pdBIeCgpjYXBhYmlsaXR5GAQgASgJUgpj'
+    'YXBhYmlsaXR5');
 
 @$core.Deprecated('Use toolInfoDescriptor instead')
 const ToolInfo$json = {
