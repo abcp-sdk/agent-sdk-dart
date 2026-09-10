@@ -1134,6 +1134,7 @@ const TestProviderRequest$json = {
     {'1': 'api_key', '3': 4, '4': 1, '5': 9, '10': 'apiKey'},
     {'1': 'model', '3': 5, '4': 1, '5': 9, '10': 'model'},
     {'1': 'variant', '3': 6, '4': 1, '5': 9, '10': 'variant'},
+    {'1': 'capability', '3': 7, '4': 1, '5': 9, '10': 'capability'},
   ],
 };
 
@@ -1142,7 +1143,7 @@ final $typed_data.Uint8List testProviderRequestDescriptor = $convert.base64Decod
     'ChNUZXN0UHJvdmlkZXJSZXF1ZXN0Eh8KC3Byb3ZpZGVyX2lkGAEgASgJUgpwcm92aWRlcklkEh'
     'kKCGFwaV90eXBlGAIgASgJUgdhcGlUeXBlEhkKCGJhc2VfdXJsGAMgASgJUgdiYXNlVXJsEhcK'
     'B2FwaV9rZXkYBCABKAlSBmFwaUtleRIUCgVtb2RlbBgFIAEoCVIFbW9kZWwSGAoHdmFyaWFudB'
-    'gGIAEoCVIHdmFyaWFudA==');
+    'gGIAEoCVIHdmFyaWFudBIeCgpjYXBhYmlsaXR5GAcgASgJUgpjYXBhYmlsaXR5');
 
 @$core.Deprecated('Use testProviderResponseDescriptor instead')
 const TestProviderResponse$json = {

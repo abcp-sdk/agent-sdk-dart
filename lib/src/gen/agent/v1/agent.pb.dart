@@ -4120,6 +4120,7 @@ class TestProviderRequest extends $pb.GeneratedMessage {
     $core.String? apiKey,
     $core.String? model,
     $core.String? variant,
+    $core.String? capability,
   }) {
     final result = create();
     if (providerId != null) result.providerId = providerId;
@@ -4128,6 +4129,7 @@ class TestProviderRequest extends $pb.GeneratedMessage {
     if (apiKey != null) result.apiKey = apiKey;
     if (model != null) result.model = model;
     if (variant != null) result.variant = variant;
+    if (capability != null) result.capability = capability;
     return result;
   }
 
@@ -4150,6 +4152,7 @@ class TestProviderRequest extends $pb.GeneratedMessage {
     ..aOS(4, _omitFieldNames ? '' : 'apiKey')
     ..aOS(5, _omitFieldNames ? '' : 'model')
     ..aOS(6, _omitFieldNames ? '' : 'variant')
+    ..aOS(7, _omitFieldNames ? '' : 'capability')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -4225,6 +4228,17 @@ class TestProviderRequest extends $pb.GeneratedMessage {
   $core.bool hasVariant() => $_has(5);
   @$pb.TagNumber(6)
   void clearVariant() => $_clearField(6);
+
+  /// What the model under test generates: "text" (default). Only text models
+  /// are testable today; image/video/speech are rejected with a clear message.
+  @$pb.TagNumber(7)
+  $core.String get capability => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set capability($core.String value) => $_setString(6, value);
+  @$pb.TagNumber(7)
+  $core.bool hasCapability() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearCapability() => $_clearField(7);
 }
 
 class TestProviderResponse extends $pb.GeneratedMessage {
