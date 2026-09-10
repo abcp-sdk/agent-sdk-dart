@@ -4061,8 +4061,16 @@ class TestProviderResponse extends $pb.GeneratedMessage {
   void clearResult() => $_clearField(2);
 }
 
+/// ListModels returns models. When provider_id is set, only that provider's
+/// models are returned; empty returns every registered provider's models.
 class ListModelsRequest extends $pb.GeneratedMessage {
-  factory ListModelsRequest() => create();
+  factory ListModelsRequest({
+    $core.String? providerId,
+  }) {
+    final result = create();
+    if (providerId != null) result.providerId = providerId;
+    return result;
+  }
 
   ListModelsRequest._();
 
@@ -4077,6 +4085,7 @@ class ListModelsRequest extends $pb.GeneratedMessage {
       _omitMessageNames ? '' : 'ListModelsRequest',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'agent.v1'),
       createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'providerId')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -4097,6 +4106,15 @@ class ListModelsRequest extends $pb.GeneratedMessage {
   static ListModelsRequest getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<ListModelsRequest>(create);
   static ListModelsRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get providerId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set providerId($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasProviderId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearProviderId() => $_clearField(1);
 }
 
 class ListModelsResponse extends $pb.GeneratedMessage {
