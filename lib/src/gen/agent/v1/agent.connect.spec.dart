@@ -67,6 +67,13 @@ abstract final class AgentService {
     agentv1agent.WatchSessionResponse.new,
   );
 
+  static const watchSessions = connect.Spec(
+    '/$name/WatchSessions',
+    connect.StreamType.server,
+    agentv1agent.WatchSessionsRequest.new,
+    agentv1agent.WatchSessionsResponse.new,
+  );
+
   static const fork = connect.Spec(
     '/$name/Fork',
     connect.StreamType.unary,

@@ -44,6 +44,7 @@ class Session extends $pb.GeneratedMessage {
     $core.String? lastMessageAt,
     $core.String? lastMessagePreview,
     $core.String? variant,
+    $core.int? messageSeq,
   }) {
     final result = create();
     if (name != null) result.name = name;
@@ -69,6 +70,7 @@ class Session extends $pb.GeneratedMessage {
     if (lastMessagePreview != null)
       result.lastMessagePreview = lastMessagePreview;
     if (variant != null) result.variant = variant;
+    if (messageSeq != null) result.messageSeq = messageSeq;
     return result;
   }
 
@@ -107,6 +109,7 @@ class Session extends $pb.GeneratedMessage {
     ..aOS(20, _omitFieldNames ? '' : 'lastMessageAt')
     ..aOS(21, _omitFieldNames ? '' : 'lastMessagePreview')
     ..aOS(22, _omitFieldNames ? '' : 'variant')
+    ..aI(23, _omitFieldNames ? '' : 'messageSeq')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -329,6 +332,19 @@ class Session extends $pb.GeneratedMessage {
   $core.bool hasVariant() => $_has(21);
   @$pb.TagNumber(22)
   void clearVariant() => $_clearField(22);
+
+  /// Monotonic per-session message counter, bumped for every appended message
+  /// (user/assistant/event/compaction). Clients derive the unread count as the
+  /// number of messages with seq greater than their locally-persisted read
+  /// watermark (read state is client-local; the agent never stores it).
+  @$pb.TagNumber(23)
+  $core.int get messageSeq => $_getIZ(22);
+  @$pb.TagNumber(23)
+  set messageSeq($core.int value) => $_setSignedInt32(22, value);
+  @$pb.TagNumber(23)
+  $core.bool hasMessageSeq() => $_has(22);
+  @$pb.TagNumber(23)
+  void clearMessageSeq() => $_clearField(23);
 }
 
 /// Message row (bare).
@@ -1472,6 +1488,119 @@ class WatchSessionResponse extends $pb.GeneratedMessage {
   $core.bool hasEid() => $_has(2);
   @$pb.TagNumber(3)
   void clearEid() => $_clearField(3);
+}
+
+/// WatchSessions streams the session list in real time: an initial full
+/// snapshot, then per-session upserts (message-fact changes, settings changes)
+/// and removals (deletes). Replaces list polling.
+class WatchSessionsRequest extends $pb.GeneratedMessage {
+  factory WatchSessionsRequest() => create();
+
+  WatchSessionsRequest._();
+
+  factory WatchSessionsRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WatchSessionsRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WatchSessionsRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'agent.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WatchSessionsRequest clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WatchSessionsRequest copyWith(void Function(WatchSessionsRequest) updates) =>
+      super.copyWith((message) => updates(message as WatchSessionsRequest))
+          as WatchSessionsRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WatchSessionsRequest create() => WatchSessionsRequest._();
+  @$core.override
+  WatchSessionsRequest createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WatchSessionsRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WatchSessionsRequest>(create);
+  static WatchSessionsRequest? _defaultInstance;
+}
+
+class WatchSessionsResponse extends $pb.GeneratedMessage {
+  factory WatchSessionsResponse({
+    $core.Iterable<Session>? upserts,
+    $core.Iterable<$core.String>? removed,
+    $core.bool? snapshot,
+  }) {
+    final result = create();
+    if (upserts != null) result.upserts.addAll(upserts);
+    if (removed != null) result.removed.addAll(removed);
+    if (snapshot != null) result.snapshot = snapshot;
+    return result;
+  }
+
+  WatchSessionsResponse._();
+
+  factory WatchSessionsResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory WatchSessionsResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'WatchSessionsResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'agent.v1'),
+      createEmptyInstance: create)
+    ..pPM<Session>(1, _omitFieldNames ? '' : 'upserts',
+        subBuilder: Session.create)
+    ..pPS(2, _omitFieldNames ? '' : 'removed')
+    ..aOB(3, _omitFieldNames ? '' : 'snapshot')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WatchSessionsResponse clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  WatchSessionsResponse copyWith(
+          void Function(WatchSessionsResponse) updates) =>
+      super.copyWith((message) => updates(message as WatchSessionsResponse))
+          as WatchSessionsResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static WatchSessionsResponse create() => WatchSessionsResponse._();
+  @$core.override
+  WatchSessionsResponse createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static WatchSessionsResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WatchSessionsResponse>(create);
+  static WatchSessionsResponse? _defaultInstance;
+
+  /// New/updated session snapshots (message facts + settings).
+  @$pb.TagNumber(1)
+  $pb.PbList<Session> get upserts => $_getList(0);
+
+  /// Session names that were removed.
+  @$pb.TagNumber(2)
+  $pb.PbList<$core.String> get removed => $_getList(1);
+
+  /// True for the initial full snapshot: the client replaces its whole list
+  /// with `upserts` (dropping anything not present) instead of merging.
+  @$pb.TagNumber(3)
+  $core.bool get snapshot => $_getBF(2);
+  @$pb.TagNumber(3)
+  set snapshot($core.bool value) => $_setBool(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasSnapshot() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSnapshot() => $_clearField(3);
 }
 
 /// A file reference (attachment).
@@ -6348,6 +6477,10 @@ class AgentServiceApi {
           $pb.ClientContext? ctx, WatchSessionRequest request) =>
       _client.invoke<WatchSessionResponse>(
           ctx, 'AgentService', 'WatchSession', request, WatchSessionResponse());
+  $async.Future<WatchSessionsResponse> watchSessions(
+          $pb.ClientContext? ctx, WatchSessionsRequest request) =>
+      _client.invoke<WatchSessionsResponse>(ctx, 'AgentService',
+          'WatchSessions', request, WatchSessionsResponse());
   $async.Future<ForkResponse> fork(
           $pb.ClientContext? ctx, ForkRequest request) =>
       _client.invoke<ForkResponse>(

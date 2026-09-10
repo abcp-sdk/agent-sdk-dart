@@ -145,6 +145,23 @@ extension type AgentServiceClient (connect.Transport _transport) {
     );
   }
 
+  Stream<agentv1agent.WatchSessionsResponse> watchSessions(
+    agentv1agent.WatchSessionsRequest input, {
+    connect.Headers? headers,
+    connect.AbortSignal? signal,
+    Function(connect.Headers)? onHeader,
+    Function(connect.Headers)? onTrailer,
+  }) {
+    return connect.Client(_transport).server(
+      specs.AgentService.watchSessions,
+      input,
+      signal: signal,
+      headers: headers,
+      onHeader: onHeader,
+      onTrailer: onTrailer,
+    );
+  }
+
   Future<agentv1agent.ForkResponse> fork(
     agentv1agent.ForkRequest input, {
     connect.Headers? headers,

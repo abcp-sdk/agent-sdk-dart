@@ -37,6 +37,8 @@ abstract class AgentServiceBase extends $pb.GeneratedService {
       $pb.ServerContext ctx, $1.PromptRequest request);
   $async.Future<$1.WatchSessionResponse> watchSession(
       $pb.ServerContext ctx, $1.WatchSessionRequest request);
+  $async.Future<$1.WatchSessionsResponse> watchSessions(
+      $pb.ServerContext ctx, $1.WatchSessionsRequest request);
   $async.Future<$1.ForkResponse> fork(
       $pb.ServerContext ctx, $1.ForkRequest request);
   $async.Future<$1.RenameResponse> rename(
@@ -116,6 +118,8 @@ abstract class AgentServiceBase extends $pb.GeneratedService {
         return $1.PromptRequest();
       case 'WatchSession':
         return $1.WatchSessionRequest();
+      case 'WatchSessions':
+        return $1.WatchSessionsRequest();
       case 'Fork':
         return $1.ForkRequest();
       case 'Rename':
@@ -200,6 +204,8 @@ abstract class AgentServiceBase extends $pb.GeneratedService {
         return prompt(ctx, request as $1.PromptRequest);
       case 'WatchSession':
         return watchSession(ctx, request as $1.WatchSessionRequest);
+      case 'WatchSessions':
+        return watchSessions(ctx, request as $1.WatchSessionsRequest);
       case 'Fork':
         return fork(ctx, request as $1.ForkRequest);
       case 'Rename':
